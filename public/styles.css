@@ -1,0 +1,23 @@
+.image{
+    width: 300px;    
+}
+
+.nav{
+    background-color: #0099ff;
+    height: 100px;
+}
+
+.navLink{
+    text-decoration: none;
+    color: white;
+}
+
+.titulos{
+    font-size: 1.5em;
+    color: #0099ff;
+}
+
+.foodCont{
+    border: 1px solid #0099ff;
+    height: 50px;
+}
