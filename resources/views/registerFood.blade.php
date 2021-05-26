@@ -16,64 +16,85 @@
             </div>
             <form action="/guardaalimento" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="">
-                    <div class="row">
-                        <div class="col-4">
-                            <p>Nombre del alimento:</p>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" name="txtAlimento" placeholder="nombre" class="w-100">
-                        </div>
+                {{-- Texto e input para el nombre del alimento --}}
+                <div class="row m-0 p-0 mt-3">
+                    <div class="col-4 d-flex justify-content-center">
+                        <p class="titTxt">Nombre del alimento:</p>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            Macronutrientes (Por cada 100 gramos)
-                        </div>
+                    <div class="col-8">
+                        <input type="text" name="txtAlimento" placeholder="Nombre" class="w-100">
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-md-2">
-                            <label for="txtCarbos">Carbohidratos:</label> 
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" name="txtCarbos" placeholder="Carbos" class="w-50">
-                        </div>
-                        <div class="col-md-2">
-                            <label for="txtProte">Proteinas:</label>
-                        </div>
-                        <div class="col-md-2">
-                           <input type="text" name="txtProte" placeholder="Prote">
-                        </div>
-                        <div class="col-md-2">
-                            <label for="txtGrasas">Grasas</label>
-                        </div> 
-                        <div class="col-md-2">
-                            <input type="text" name="txtGrasas" placeholder="Grasas">
-                        </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <p class="titTxt">Macronutrientes (Por cada 100 gramos)</p>
                     </div>
-                    <div class="row">
-                        <input type="submit" value="Enviar">
+                </div>
+                <div class="row m-0 p-0 mt-3">
+                    {{-- Texto e input para los carbohidratos del alimento --}}
+                    <div class="col-md-2 d-flex justify-content-end">
+                        <span for="txtCarbos" class="align-self-center titTxt">Carbohidratos:</span> 
                     </div>
+                    <div class="col-md-2">
+                        <input type="text" name="txtCarbos" placeholder="Carbohidratos" class="w-100">
+                    </div>
+                    {{-- Texto e input para las proteinas del alimento --}}
+                    <div class="col-md-2 d-flex justify-content-end">
+                        <span for="txtProte" class="align-self-center titTxt">Proteínas:</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" name="txtProte" placeholder="Proteína" class="w-100">
+                    </div>
+                    {{-- Texto e input para las grasas del alimento --}}
+                    <div class="col-md-2 d-flex justify-content-end">
+                        <span for="txtGrasas" class="align-self-center titTxt">Grasas:</span>
+                    </div> 
+                    <div class="col-md-2">
+                        <input type="text" name="txtGrasas" placeholder="Grasas" class="w-100">
+                    </div>
+                </div>
+                {{-- Botón enviar --}}
+                <div class="row mt-5 justify-content-center">
+                    <input type="submit" value="Enviar" class="btn boton">
                 </div>
             </form>
         </div>
     </div>
-    <div class="row m-0 p-0 justify-content-center">
+    <div class="row m-0 p-0 mt-5 justify-content-center">
         <p class="titulos"><b>ALIMENTOS ACTUALES</b></p>
     </div>
     <div class="container">
         @foreach($foods as $food)
-            <div class="row m-0 p-0 mt-3 foodCont bg-danger">
-                <div class="col-2 bg-dark d-flex">
-                    <span class="bg-success justify-content-center align-self-center">Nombre: {{ $food->name }}</span>
+            <div class="row m-0 p-0 mt-3 foodCont">
+                <div class="col-2 d-flex">
+                    <span class="justify-content-center align-self-center">
+                        <span class="titTxt">Nombre: </span>
+                        <span class="contTxt">{{ $food->name }}</span>
+                    </span>
                 </div>
-                <div class="col-2">
-                    Proteinas: {{ $food->proteins }}
+                <div class="col-2 d-flex">
+                    <span class="justify-content-center align-self-center">
+                        <span class="titTxt">Proteinas: </span>
+                        <span class="contTxt">{{ $food->proteins }}</span>
+                    </span>
                 </div>
-                <div class="col-2">
-                    Carbohidratos: {{ $food->cabrs }}
+                <div class="col-2 d-flex">
+                    <span class="justify-content-center align-self-center">
+                        <span class="titTxt">Carbohidratos: </span>
+                        <span class="contTxt">{{ $food->carbs }}</span>
+                    </span>
                 </div>
-                <div class="col-2">
-                    Grasas: {{ $food->fats }}
+                <div class="col-2 d-flex">
+                    <span class="justify-content-center align-self-center">
+                        <span class="titTxt">Grasas: </span>
+                        <span class="contTxt">{{ $food->fats }}</span>
+                    </span>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                    <i class="fas fa-edit align-self-center editIcon"></i>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                    <i class="fas fa-trash-alt align-self-center deleteIcon"></i>
                 </div>
             </div>  
         @endforeach
