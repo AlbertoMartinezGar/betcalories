@@ -39,4 +39,10 @@ class GeneralController extends Controller
 
         return redirect("/registerfood");
     }
+
+    public function deleteFood($id){
+        $comida = Food::find($id);
+        $comida->delete();
+        return redirect("/registerfood");
+    }
 }

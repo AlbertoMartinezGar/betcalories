@@ -91,10 +91,23 @@
                     </span>
                 </div>
                 <div class="col-2 d-flex justify-content-end">
-                    <i class="fas fa-edit align-self-center editIcon"></i>
+                    <a class="align-self-center editIcon" href="">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </div>
                 <div class="col-2 d-flex justify-content-end">
-                    <i class="fas fa-trash-alt align-self-center deleteIcon"></i>
+                    {{-- <a class="align-self-center deleteIcon" href="/borraralimento/{{ $food->id }}">
+                        <i class="fas fa-trash-alt"></i>
+                    </a> --}}
+                    <form action="/borraralimento/{{$food->id}}" method="post" class="justify-content-center align-items-center d-flex">
+                        @csrf
+                        @method('delete')
+                        <div class="align-self-center deleteIcon m-auto">
+                            <button type="submit" class="btn">
+                                <i class="fas fa-trash-alt icon2"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>  
         @endforeach
