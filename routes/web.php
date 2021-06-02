@@ -12,4 +12,7 @@ Route::get('/registerfood', 'GeneralController@registerFood');
 
 Route::post('/guardaalimento', 'GeneralController@savefood');
 
-Route::delete('/borraralimento/{id}', 'GeneralController@deleteFood');
+Route::post('/borraralimento/{id}', 'GeneralController@deleteFood');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

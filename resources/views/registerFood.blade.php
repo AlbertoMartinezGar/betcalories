@@ -66,43 +66,42 @@
     <div class="container">
         @foreach($foods as $food)
             <div class="row m-0 p-0 mt-3 foodCont">
-                <div class="col-2 d-flex">
+                <div class="col-md-2 d-flex">
                     <span class="justify-content-center align-self-center">
                         <span class="titTxt">Nombre: </span>
                         <span class="contTxt">{{ $food->name }}</span>
                     </span>
                 </div>
-                <div class="col-2 d-flex">
+                <div class="col-md-2 d-flex">
                     <span class="justify-content-center align-self-center">
                         <span class="titTxt">Proteinas: </span>
                         <span class="contTxt">{{ $food->proteins }}</span>
                     </span>
                 </div>
-                <div class="col-2 d-flex">
+                <div class="col-md-2 d-flex">
                     <span class="justify-content-center align-self-center">
                         <span class="titTxt">Carbohidratos: </span>
                         <span class="contTxt">{{ $food->carbs }}</span>
                     </span>
                 </div>
-                <div class="col-2 d-flex">
+                <div class="col-md-2 d-flex">
                     <span class="justify-content-center align-self-center">
                         <span class="titTxt">Grasas: </span>
                         <span class="contTxt">{{ $food->fats }}</span>
                     </span>
                 </div>
-                <div class="col-2 d-flex justify-content-end">
-                    <a class="align-self-center editIcon" href="">
+                <div class="col-md-2 d-flex justify-content-end">
+                    <a class="align-self-center editIcon" href="/editaralimento/{{ $food->id }}">
                         <i class="fas fa-edit"></i>
                     </a>
                 </div>
-                <div class="col-2 d-flex justify-content-end">
+                <div class="col-md-2 d-flex justify-content-end">
                     {{-- <a class="align-self-center deleteIcon" href="/borraralimento/{{ $food->id }}">
                         <i class="fas fa-trash-alt"></i>
                     </a> --}}
                     <form action="/borraralimento/{{$food->id}}" method="post" class="justify-content-center align-items-center d-flex">
                         @csrf
-                        @method('delete')
-                        <div class="align-self-center deleteIcon m-auto">
+                        <div class="align-self-center deleteIcon">
                             <button type="submit" class="btn">
                                 <i class="fas fa-trash-alt icon2"></i>
                             </button>

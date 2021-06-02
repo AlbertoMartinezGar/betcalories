@@ -16,22 +16,22 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('lastname');
-            $table->float('height');
-            $table->float('weight');
-            $table->integer('age');
+            $table->string('lastname')->nullable();
+            $table->float('height')->nullable();
+            $table->float('weight')->nullable();
+            $table->integer('age')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('caloriesPerDay');
-            $table->integer('goal');
-            $table->integer('role');
-            $table->unsignedBigInteger('day_id');
+            $table->integer('caloriesPerDay')->nullable();
+            $table->integer('goal')->nullable();
+            $table->integer('role')->nullable();
+            $table->unsignedBigInteger('day_id')->nullable();
             
             $table->foreign('day_id')
                 ->references('id')
                 ->on('day')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
