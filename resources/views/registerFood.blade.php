@@ -65,48 +65,42 @@
     </div>
     <div class="container">
         @foreach($foods as $food)
-            <div class="row m-0 p-0 mt-3 foodCont">
-                <div class="col-md-2 d-flex">
-                    <span class="justify-content-center align-self-center">
-                        <span class="titTxt">Nombre: </span>
-                        <span class="contTxt">{{ $food->name }}</span>
-                    </span>
-                </div>
-                <div class="col-md-2 d-flex">
-                    <span class="justify-content-center align-self-center">
-                        <span class="titTxt">Proteinas: </span>
-                        <span class="contTxt">{{ $food->proteins }}</span>
-                    </span>
-                </div>
-                <div class="col-md-2 d-flex">
-                    <span class="justify-content-center align-self-center">
-                        <span class="titTxt">Carbohidratos: </span>
-                        <span class="contTxt">{{ $food->carbs }}</span>
-                    </span>
-                </div>
-                <div class="col-md-2 d-flex">
-                    <span class="justify-content-center align-self-center">
-                        <span class="titTxt">Grasas: </span>
-                        <span class="contTxt">{{ $food->fats }}</span>
-                    </span>
-                </div>
-                <div class="col-md-2 d-flex justify-content-end">
-                    <a class="align-self-center editIcon" href="/editaralimento/{{ $food->id }}">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </div>
-                <div class="col-md-2 d-flex justify-content-end">
-                    {{-- <a class="align-self-center deleteIcon" href="/borraralimento/{{ $food->id }}">
-                        <i class="fas fa-trash-alt"></i>
-                    </a> --}}
-                    <form action="/borraralimento/{{$food->id}}" method="post" class="justify-content-center align-items-center d-flex">
-                        @csrf
-                        <div class="align-self-center deleteIcon">
-                            <button type="submit" class="btn">
-                                <i class="fas fa-trash-alt icon2"></i>
-                            </button>
+            <div class="row m-0 p-0 mt-3">
+                <div class="card w-100">
+                    <div class="card-header text-center">
+                        <span class="titTxt">
+                            {{ $food->name }}
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <span class="titTxt">Proteinas: </span>
+                                <span class="contTxt">{{ $food->proteins }}</span>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <span class="titTxt">Carbohidratos: </span>
+                                <span class="contTxt">{{ $food->carbs }}</span>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <span class="titTxt">Grasas: </span>
+                                <span class="contTxt">{{ $food->fats }}</span>
+                            </div>
                         </div>
-                    </form>
+                        <div class="row mt-5">
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <a href="#" class="btn btn-primary w-50">Editar</a>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <form action="/borraralimento/{{$food->id}}" method="post" class="d-flex justify-content-center w-100">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger w-50">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>  
         @endforeach
