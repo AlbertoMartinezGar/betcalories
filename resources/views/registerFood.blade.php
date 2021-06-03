@@ -22,7 +22,7 @@
                         <p class="titTxt">Nombre del alimento:</p>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="txtAlimento" placeholder="Nombre" class="w-100">
+                        <input type="text" name="txtAlimento" placeholder="Nombre" class="w-100 form-control">
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -36,21 +36,21 @@
                         <span for="txtCarbos" class="align-self-center titTxt">Carbohidratos:</span> 
                     </div>
                     <div class="col-md-2">
-                        <input type="text" name="txtCarbos" placeholder="Carbohidratos" class="w-100">
+                        <input type="text" name="txtCarbos" placeholder="Carbohidratos" class="w-100 form-control">
                     </div>
                     {{-- Texto e input para las proteinas del alimento --}}
                     <div class="col-md-2 d-flex justify-content-end">
                         <span for="txtProte" class="align-self-center titTxt">Proteínas:</span>
                     </div>
                     <div class="col-md-2">
-                        <input type="text" name="txtProte" placeholder="Proteína" class="w-100">
+                        <input type="text" name="txtProte" placeholder="Proteína" class="w-100 form-control">
                     </div>
                     {{-- Texto e input para las grasas del alimento --}}
                     <div class="col-md-2 d-flex justify-content-end">
                         <span for="txtGrasas" class="align-self-center titTxt">Grasas:</span>
                     </div> 
                     <div class="col-md-2">
-                        <input type="text" name="txtGrasas" placeholder="Grasas" class="w-100">
+                        <input type="text" name="txtGrasas" placeholder="Grasas" class="w-100 form-control">
                     </div>
                 </div>
                 {{-- Botón enviar --}}
@@ -64,6 +64,7 @@
         <p class="titulos"><b>ALIMENTOS ACTUALES</b></p>
     </div>
     <div class="container">
+        {{-- Aqui se muestran todos los alimentos de la BD en forma de Card --}}
         @foreach($foods as $food)
             <div class="row m-0 p-0 mt-3">
                 <div class="card w-100">
@@ -89,7 +90,7 @@
                         </div>
                         <div class="row mt-5">
                             <div class="col-md-6 d-flex justify-content-center">
-                                <a href="#" class="btn btn-primary w-50">Editar</a>
+                                <a href="/editaralimento/{{$food->id}}" class="btn btn-primary w-50">Editar</a>
                             </div>
                             <div class="col-md-6 d-flex justify-content-center">
                                 <form action="/borraralimento/{{$food->id}}" method="post" class="d-flex justify-content-center w-100">

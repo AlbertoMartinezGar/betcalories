@@ -25,17 +25,7 @@ class GeneralController extends Controller
         $food->proteins = request("txtProte");
         $food->fats = request("txtGrasas");
 
-        
-        //$pedido->save();
-
-        /* $path = $request->file('archivo')->storeAs('public/imagenes',$pedido->id.'.'.$request->file('archivo')->getClientOriginalExtension());
-        $pedido->imagen=$pedido->id.'.'.$request->file('archivo')->getClientOriginalExtension(); */
-
-        // dd($path);
-
         $food->save();
-
-        //Auth::attempt(['email' => $email, 'password' => $password])
 
         return redirect("/registerfood");
     }
@@ -43,6 +33,24 @@ class GeneralController extends Controller
     public function deleteFood($id){
         $comida = Food::find($id);
         $comida->delete();
+        return redirect("/registerfood");
+    }
+
+    public function getFood($id){
+        $comida = Food::find($id);
+        return view('editFood')->with('food', $comida);
+    }
+
+    public function saveEditFood(Request $request){
+        $id = request("txtID");
+        $food = Food::find($id);
+        $food->name = request("txtAlimento");
+        $food->carbs = request("txtCarbos");
+        $food->proteins = request("txtProte");
+        $food->fats = request("txtGrasas");
+
+        $food->save();
+
         return redirect("/registerfood");
     }
 }
