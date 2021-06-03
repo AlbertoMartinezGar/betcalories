@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'role' => 'admin'
         ]);
 
+        //Usuario autenticado
         User::create([
             'name' => 'beto',
             'email' => 'beto@gmail.mx',
