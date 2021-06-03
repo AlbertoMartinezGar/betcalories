@@ -4,6 +4,12 @@
     @include('Plantillas.head', ['titulo' => 'Edita un producto'])
 </head>
 <body>
+    <div class="row m-0 p-0 justify-content-end mt-3">
+        <div class="col-3">
+            <a href="/registerfood">Volver</a>
+        </div>
+    </div>
+    <hr>
     <div class="row m-0 p-0 mt-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -56,5 +62,6 @@
             </form>
         </div>
     </div>
+    <hr>
 </body>
 </html>

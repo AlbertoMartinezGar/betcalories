@@ -4,11 +4,12 @@
     @include('Plantillas.head', ['titulo' => 'Registra un producto'])
 </head>
 <body>
-    <div class="row m-0 p-0 justify-content-end mt-2">
+    <div class="row m-0 p-0 justify-content-end mt-3">
         <div class="col-3">
             <a href="/">Regresar al inicio</a>
         </div>
     </div>
+    <hr>
     <div class="row m-0 p-0 mt-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -60,6 +61,7 @@
             </form>
         </div>
     </div>
+    <hr>
     <div class="row m-0 p-0 mt-5 justify-content-center">
         <p class="titulos"><b>ALIMENTOS ACTUALES</b></p>
     </div>

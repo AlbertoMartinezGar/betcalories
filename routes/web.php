@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', 'GeneralController@showLogin');
+//Route::get('/login', 'GeneralController@showLogin');
 
 
 /* CRUD Alimentos */
