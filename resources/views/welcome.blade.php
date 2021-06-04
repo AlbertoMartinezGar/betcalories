@@ -4,29 +4,7 @@
     @include('Plantillas.head', ['titulo' => 'BetCalories'])
 </head>
 <body>
-    
-    {{-- <div class="row m-0 p-0 align-items-center nav">
-        <div class="col-5 text-center">
-            <a href="/">
-                <img src="{{ asset('LogoBetCalories.png') }}" class="image">
-            </a>
-        </div>
-        <div class="col-7">
-            <div class="row justify-content-end">
-                <div class="col-3 text-center">
-                    <a href="/" class="navLink">Recetas</a>
-                </div>
-                <div class="col-3 text-center">
-                    <a href="/login" class="navLink">Inicia Sesión</a>
-                </div>
-                <div class="col-3 text-center">
-                    <a href="/" class="navLink">Registrate</a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('LogoBetCalories.png') }}" class="image">
         </a>
@@ -45,6 +23,49 @@
           </ul>
         </div>
       </nav>
-    
+      <div class="container mt-5">
+        {{-- Información de la página --}}
+        <div class="row m-0 p-0 justify-content-center">
+          <h1 class="text-primary text-center"><b><u>Acerca de la página</u></b></h1>
+        </div>
+        {{-- Parrafo superior --}}
+        <div class="row m-0 p-0 mt-3">
+          <div class="col-md-8 d-flex align-items-center">
+            <span class="text-primary text-center textoInicio">BetCalories es una plataforma para las personas que desean llevar una cuenta de las calorias ingeridas durante el día. Ayudando a las personas a lograr su objetivo ya sea: bajar de peso, conservar su peso actual o aumentar su peso.</span>
+          </div>
+          <div class="col-md-4 d-flex justify-content-center">
+            <img src="{{ asset('comida.jpg') }}" height="200px">
+          </div>
+        </div>
+        {{-- Parrafo inferior --}}
+        <div class="row m-0 p-0 mt-3">
+          <div class="col-md-4 d-flex justify-content-center">
+            <img src="{{ asset('BobEsponja.jpg') }}" height="150px">
+          </div>
+          <div class="col-md-8 d-flex align-items-center">
+            <span class="text-primary text-center textoInicio">Mantener un registro de comidas te ayudar a comprender tus hábitos y aumenta la probabilidad de que alcances tus objetivos.</span>
+          </div>
+        </div>
+        <hr>
+        {{-- Información personal --}}
+        <div class="row m-0 p-0 mt-5 justify-content-center">
+          <h1 class="text-primary text-center"><b><u>Información personal</u></b></h1>
+        </div>
+        <div class="row m-0 p-0 mt-3 justify-content-left">
+          <span class="text-primary textoInicio"><b>Nombre: </b>Alberto Enrique Martínez García</span>
+        </div>
+        <div class="row m-0 p-0 justify-content-left">
+          <span class="text-primary textoInicio"><b>Clave única: </b>278603</span>
+        </div>
+        <div class="row m-0 p-0 justify-content-left">
+          <span class="text-primary textoInicio"><b>Carrera: </b>Ingeniería en Sistemas Inteligentes</span>
+        </div>
+        <div class="row m-0 p-0 justify-content-left">
+          <span class="text-primary textoInicio"><b>Semestre: </b>2020-2021/II</span>
+        </div>
+        <div class="row m-0 p-0 justify-content-left">
+          <span class="text-primary textoInicio"><b>Materia: </b>Aplicaciones web interactivas</span>
+        </div>
+      </div>
 </body>
 </html>
