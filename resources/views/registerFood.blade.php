@@ -6,7 +6,7 @@
 <body>
     <div class="row m-0 p-0 justify-content-end mt-3">
         <div class="col-3">
-            <a href="/">Regresar al inicio</a>
+            <a href="/homeadmin">Regresar al inicio</a>
         </div>
     </div>
     <hr>

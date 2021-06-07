@@ -53,4 +53,8 @@ class GeneralController extends Controller
 
         return redirect("/registerfood");
     }
+
+    public function homeadmin(){
+        return view('/homeadmin');
+    }
 }

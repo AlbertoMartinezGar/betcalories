@@ -4,6 +4,7 @@
     @include('Plantillas.head', ['titulo' => 'BetCalories'])
 </head>
 <body>
+      {{-- Navbar --}}
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('LogoBetCalories.png') }}" class="image">
@@ -16,9 +17,6 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link" href="/login">Iniciar Sesión<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
             </li>
           </ul>
         </div>
