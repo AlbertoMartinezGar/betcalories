@@ -48,6 +48,7 @@ class GeneralController extends Controller
         $food->carbs = request("txtCarbos");
         $food->proteins = request("txtProte");
         $food->fats = request("txtGrasas");
+        $food->totalCalories = request("txtTotalCal");
 
         $food->save();
 

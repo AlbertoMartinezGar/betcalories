@@ -19,6 +19,7 @@ class CreateFoodTable extends Migration
             $table->float('carbs');
             $table->float('fats');
             $table->float('proteins');
+            $table->float('totalCalories');
             $table->softDeletes();
             $table->timestamps();
         });

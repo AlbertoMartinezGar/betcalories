@@ -14,32 +14,16 @@ class FoodSeeder extends Seeder
      */
     public function run()
     {
-        Food::create([
-            'name' => 'Arroz',
-            'carbs' => '300.00',
-            'fats' => '35.00',
-            'proteins' => '50.00'
-        ]);
 
-        Food::create([
-            'name' => 'Huevo',
-            'carbs' => '10.00',
-            'fats' => '352.00',
-            'proteins' => '250.00'
-        ]);
-
-        Food::create([
-            'name' => 'Frijol',
-            'carbs' => '42.00',
-            'fats' => '325.00',
-            'proteins' => '501.00'
-        ]);
-
-        Food::create([
-            'name' => 'Queso',
-            'carbs' => '331.00',
-            'fats' => '345.00',
-            'proteins' => '54.00'
-        ]);
+        $arrays = range(0, 50);
+        foreach ($arrays as $valor) {
+          Food::create([
+            'name' => Str::random(10),
+            'carbs' => rand(10, 30),
+            'fats' => rand(10, 30),
+            'proteins' => rand(10, 30),
+            'totalCalories' => rand(100, 200)
+            ]);
+        }
     }
 }

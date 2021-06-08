@@ -1,23 +1,36 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @include('Plantillas.head', ['titulo' => 'Home'])
+</head>
+<body>
+    @include('Plantillas.navbar')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+    <div class="container">
+        <div class="row m-0 p-0 mt-5 justify-content-center">
+            <h1 class="text-primary text-center">Bienvenido <b class="text-capitalize">{{ Auth::user()->name }}</b></h1>
         </div>
+        <div class="row m-0 p-0 mt-5">
+            <h2 class="text-primary textos">
+                El dia de hoy has consumido: <b></b> calorias.
+            </h2>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <h2 class="text-primary textos">
+                Desayuno.
+            </h2>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <h2 class="text-primary textos">
+                Comida.
+            </h2>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <h2 class="text-primary textos">
+                Cena.
+            </h2>
+        </div>
+
     </div>
-</div>
-@endsection
+</body>
+</html>

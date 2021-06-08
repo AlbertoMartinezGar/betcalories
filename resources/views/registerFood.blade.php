@@ -32,25 +32,34 @@
                     </div>
                 </div>
                 <div class="row m-0 p-0 mt-3">
+                    {{-- Texto e input para las calorias totales del alimento --}}
+                    <div class="col-md-3 d-flex justify-content-end">
+                        <span for="txtTotalCal" class="align-self-center titTxt">Calorias totales:</span> 
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="txtTotalCal" placeholder="Calorias totales" class="w-100 form-control">
+                    </div>
                     {{-- Texto e input para los carbohidratos del alimento --}}
-                    <div class="col-md-2 d-flex justify-content-end">
+                    <div class="col-md-3 d-flex justify-content-end">
                         <span for="txtCarbos" class="align-self-center titTxt">Carbohidratos:</span> 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <input type="text" name="txtCarbos" placeholder="Carbohidratos" class="w-100 form-control">
                     </div>
+                </div>
+                <div class="row m-0 p-0 mt-3">
                     {{-- Texto e input para las proteinas del alimento --}}
-                    <div class="col-md-2 d-flex justify-content-end">
+                    <div class="col-md-3 d-flex justify-content-end">
                         <span for="txtProte" class="align-self-center titTxt">Proteínas:</span>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <input type="text" name="txtProte" placeholder="Proteína" class="w-100 form-control">
                     </div>
                     {{-- Texto e input para las grasas del alimento --}}
-                    <div class="col-md-2 d-flex justify-content-end">
+                    <div class="col-md-3 d-flex justify-content-end">
                         <span for="txtGrasas" class="align-self-center titTxt">Grasas:</span>
                     </div> 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <input type="text" name="txtGrasas" placeholder="Grasas" class="w-100 form-control">
                     </div>
                 </div>
@@ -77,17 +86,23 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4 text-center">
-                                <span class="titTxt">Proteinas: </span>
-                                <span class="contTxt">{{ $food->proteins }}</span>
+                            <div class="col-md-6 text-center">
+                                <span class="titTxt textos">Calorias totales: </span>
+                                <span class="contTxt textos">{{ $food->totalCalories }}</span>
                             </div>
-                            <div class="col-md-4 text-center">
-                                <span class="titTxt">Carbohidratos: </span>
-                                <span class="contTxt">{{ $food->carbs }}</span>
+                            <div class="col-md-6 text-center">
+                                <span class="titTxt textos">Proteinas: </span>
+                                <span class="contTxt textos">{{ $food->proteins }}</span>
                             </div>
-                            <div class="col-md-4 text-center">
-                                <span class="titTxt">Grasas: </span>
-                                <span class="contTxt">{{ $food->fats }}</span>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6 text-center">
+                                <span class="titTxt textos">Carbohidratos: </span>
+                                <span class="contTxt textos">{{ $food->carbs }}</span>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <span class="titTxt textos">Grasas: </span>
+                                <span class="contTxt textos">{{ $food->fats }}</span>
                             </div>
                         </div>
                         <div class="row mt-5">
