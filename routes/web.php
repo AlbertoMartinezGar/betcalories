@@ -29,6 +29,16 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 
 
+Route::group(['middleware' => ['role:user']], function () {
+    Route::get('/registraprimeralimento/{id}', 'UserController@createDay');
+
+    Route::get('/addfood/{id}', 'UserController@addFood');
+
+    Route::post('/addfood/{id}', 'UserController@search');
+});
+
+
+
 
 Auth::routes();
 

@@ -23,13 +23,14 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('caloriesPerDay')->nullable();
             $table->string('role')->nullable();
+
             $table->unsignedBigInteger('day_id')->nullable();
-            
             $table->foreign('day_id')
                 ->references('id')
                 ->on('day')
                 ->onDelete('cascade')
                 ->onUpdate('cascade')->nullable();
+                
             $table->softDeletes();
             $table->timestamps();
         });

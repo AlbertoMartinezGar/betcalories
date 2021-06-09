@@ -16,26 +16,28 @@ class CreateDayTable extends Migration
         Schema::create('day', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('day');
-            $table->unsignedBigInteger('breakfast_id');
+
+            $table->unsignedBigInteger('breakfast_id')->nullable();
             $table->foreign('breakfast_id')
                 ->references('id')
                 ->on('breakfast')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->nullable();
             
-            $table->unsignedBigInteger('lunch_id');
+            $table->unsignedBigInteger('lunch_id')->nullable();
             $table->foreign('lunch_id')
                 ->references('id')
                 ->on('lunch')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->nullable();
 
-            $table->unsignedBigInteger('dinner_id');
+            $table->unsignedBigInteger('dinner_id')->nullable();
             $table->foreign('dinner_id')
                 ->references('id')
                 ->on('dinner')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->nullable();
+            
             $table->softDeletes();  
             $table->timestamps();
         });

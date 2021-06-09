@@ -16,13 +16,13 @@ class CreateLunchTable extends Migration
         Schema::create('lunch', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('foodto_id');
+            $table->unsignedBigInteger('foodto_id')->nullable();
             
             $table->foreign('foodto_id')
                 ->references('id')
                 ->on('foodtolunch')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
