@@ -54,11 +54,19 @@
                             </div>
                         </div>
                         <div class="row mt-5 justify-content-center">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <form action="" method="post" class="d-flex justify-content-center w-100">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <form action="/savefood/{{ $food->id }}" method="post" class="d-flex justify-content-center w-100">
                                     @csrf
-                                    <input type="hidden" value="{{ Auth::user()->id }}">
-                                    <button type="submit" class="btn btn-primary w-100">
+                                    <input type="hidden" name="userID" value="{{ Auth::user()->id }}">
+                                    <label for="cantidad" class="titTxt textos h-100 w-25 mr-2 d-flex align-items-center justify-content-center">Cantidad ingerida:</label>
+                                    <input type="text" name="cantidad" class="form-control w-25 mr-2" placeholder="Cantidad">
+                                    <select name="comida" id="inputState" class="form-control w-25 mr-2">
+                                        <option selected>Agregar a...</option>
+                                        <option value="1">Desayuno</option>
+                                        <option value="2">Comida</option>
+                                        <option value="3">Cena</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">
                                         Agregar
                                     </button>
                                 </form>

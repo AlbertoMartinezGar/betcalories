@@ -16,13 +16,20 @@ class CreateFoodtodinnerTable extends Migration
         Schema::create('foodtodinner', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->float('quantity');
+            //Relación con el alimento
             $table->unsignedBigInteger('food_id');
+            
             
             $table->foreign('food_id')
                 ->references('id')
-                ->on('food')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->on('food');
+
+            //Relación con la cena
+            $table->unsignedBigInteger('foodTo_id');
+        
+            $table->foreign('foodTo_id')
+                ->references('id')
+                ->on('dinner');  
             
             $table->softDeletes();
             $table->timestamps();
