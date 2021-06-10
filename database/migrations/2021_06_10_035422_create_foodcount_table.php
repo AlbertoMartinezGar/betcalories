@@ -20,7 +20,7 @@ class CreateFoodcountTable extends Migration
             //Relación con el alimento
             $table->unsignedBigInteger('food_id')->nullable();
             $table->foreign('food_id')
-                ->references('id')
+                ->references('idFood')
                 ->on('food')->nullable();
 
             //Relación con el dia

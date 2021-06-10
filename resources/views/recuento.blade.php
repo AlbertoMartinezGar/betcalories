@@ -13,25 +13,53 @@
         @php
                //dd($foods);
             @endphp
-        @if (!$foods->isEmpty())
-            <?php $total = 0 ?>
+        @if (!$foods->isEmpty())            
+            <?php 
+                $caloriasTotales = 0; 
+                $carbosTotales = 0;
+                $grasasTotales = 0;
+                $protesTotales = 0;
+            ?>
             @foreach ($foods as $food)
-                <?php $total += $food->totalCalories ?>
+                <?php 
+                    $caloriasTotales += $food->totalCalories * ($food->quantity/100);
+                    $carbosTotales += $food->carbs * ($food->quantity/100);
+                    $grasasTotales += $food->fats * ($food->quantity/100);
+                    $protesTotales += $food->proteins * ($food->quantity/100);
+                ?>
             @endforeach
             <div class="row m-0 p-0 mt-5">
                 <h2 class="text-primary textos">
-                    El dia de hoy has consumido: 
-                    <b>
-                        {{ $total }}
-                    </b> 
-                    calorias.
+                    El dia de hoy has consumido: <b>{{ $caloriasTotales }}</b> calorias.<br>
+                    De los cuales:<br>
+                    - Carbohidratos: <b>{{ $carbosTotales }}</b> gramos.<br>
+                    - Proteínas: <b>{{ $protesTotales }}</b> gramos.<br>
+                    - Grasas: <b>{{ $grasasTotales }}</b> gramos.<br>
                 </h2>
+            </div>
+            <div class="row m-0 p-0 mt-5 justify-content-center">
+                <a href="/addfood">
+                    <button class="btn btn-primary">
+                        Agrega un alimento
+                    </button>
+                </a>
             </div>
             <div class="row m-0 p-0 mt-5">
                 <h2 class="text-primary textos">
                     Tus alimentos de hoy:
                 </h2>
             </div>
+            {{-- Buscador --}}
+            <div class="row justify-content-center mb-5 mt-5">
+                <form action="/mycalories" method="POST" class="d-flex justify-content-center w-100">
+                    @csrf                
+                        <input type="text" name="busqueda" class="form-control w-50 mr-2" placeholder="Busca un alimento">
+                        <button type="submit" class="btn btn-outline-primary w-25">
+                            Buscar
+                        </button>
+                </form>
+            </div>
+            {{-- Fin buscador --}}
             @foreach ( $foods as $food )
             <div class="row m-0 p-0 mt-3">
                 <div class="card w-100">
@@ -61,9 +89,15 @@
                                 <span class="contTxt textos">{{ $food->fats }}</span>
                             </div>
                         </div>
+                        <div class="row mt-2 justify-content-center">
+                            <div class="col-md-6 text-center">
+                                <span class="titTxt textos">Tu comiste: </span>
+                                <span class="contTxt textos">{{ $food->quantity }}</span>
+                            </div>
+                        </div>
                         <div class="row mt-5 justify-content-center">
                             <div class="col-md-6 d-flex justify-content-center">
-                                <form action="/borraralimento/{{$food->id}}" method="post" class="d-flex justify-content-center w-100">
+                                <form action="/deletefood/{{$food->id}}" method="post" class="d-flex justify-content-center w-100">
                                     @csrf
                                     <button type="submit" class="btn btn-danger w-50">
                                         Eliminar
@@ -74,15 +108,7 @@
                     </div>
                 </div>
             </div>  
-            @endforeach
-            <div class="row m-0 p-0 mt-5 justify-content-center">
-                <a href="/addfood">
-                    <button class="btn btn-primary">
-                        Agrega un alimento
-                    </button>
-                </a>
-            </div>
-        
+            @endforeach        
         @else
         <div class="row m-0 p-0 mt-5">
             <h2 class="text-primary textos">

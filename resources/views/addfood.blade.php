@@ -61,7 +61,7 @@
                         </div>
                         <div class="row mt-5 justify-content-center">
                             <div class="col-md-12 d-flex justify-content-center">
-                                <form action="/savefood/{{ $food->id }}" method="post" class="d-flex justify-content-center w-100">
+                                <form action="/savefood/{{ $food->idFood }}" method="post" class="d-flex justify-content-center w-100">
                                     @csrf
                                     <label for="cantidad" class="titTxt textos h-100 w-25 mr-2 d-flex align-items-center justify-content-center">Cantidad ingerida:</label>
                                     <input type="text" name="cantidad" class="form-control w-25 mr-2" placeholder="Cantidad">
