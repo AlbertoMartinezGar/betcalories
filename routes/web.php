@@ -37,6 +37,8 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::post('/addfood/{id}', 'UserController@search');
 
     Route::post('/savefood/{id}', 'UserController@saveFood');
+
+    Route::get('/mycalories', 'UserController@getDailyCalories');
 });
 
 

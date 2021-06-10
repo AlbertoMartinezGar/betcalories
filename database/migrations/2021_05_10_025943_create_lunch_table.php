@@ -15,7 +15,11 @@ class CreateLunchTable extends Migration
     {
         Schema::create('lunch', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->date('date')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

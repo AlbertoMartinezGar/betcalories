@@ -16,21 +16,9 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->float('height')->nullable();
-            $table->float('weight')->nullable();
-            $table->integer('age')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('caloriesPerDay')->nullable();
-            $table->string('role')->nullable();
-
-            $table->unsignedBigInteger('day_id')->nullable();
-            $table->foreign('day_id')
-                ->references('id')
-                ->on('day')
-                ->onDelete('cascade')
-                ->onUpdate('cascade')->nullable();
-                
+            $table->string('role')->nullable();                
             $table->softDeletes();
             $table->timestamps();
         });

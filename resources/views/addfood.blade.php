@@ -6,6 +6,13 @@
 <body>
     @include('Plantillas.navbar')
 
+    <div class="row m-0 p-0 justify-content-end mt-3">
+        <div class="col-3">
+            <a href="/home">Regresar al inicio</a>
+        </div>
+    </div>
+    <hr>
+
     <div class="container">
         <div class="row m-0 p-0 mt-5 justify-content-center">
             <h1 class="text-primary text-center">Agrega un alimento a tus comidas</h1>

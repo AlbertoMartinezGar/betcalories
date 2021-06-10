@@ -15,7 +15,11 @@ class CreateDinnerTable extends Migration
     {
         Schema::create('dinner', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->date('date')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

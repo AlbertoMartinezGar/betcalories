@@ -19,18 +19,18 @@ class CreateFoodtobreakfastTable extends Migration
             $table->float('quantity');
 
             //Relación con el alimento
-            $table->unsignedBigInteger('food_id');
+            $table->unsignedBigInteger('food_id')->nullable();
             
             $table->foreign('food_id')
                 ->references('id')
-                ->on('food');
+                ->on('food')->nullable();
 
             //Relación con el desayuno
-            $table->unsignedBigInteger('foodTo_id');
+            $table->unsignedBigInteger('foodTo_id')->nullable();
         
             $table->foreign('foodTo_id')
                 ->references('id')
-                ->on('breakfast');
+                ->on('breakfast')->nullable();
                 
             $table->softDeletes();
             $table->timestamps();

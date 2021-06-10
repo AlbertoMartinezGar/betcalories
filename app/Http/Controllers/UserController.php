@@ -94,44 +94,41 @@ class UserController extends Controller
             case 1:
                 $foodtobreakfast = new BreakfastTo();
                 $foodtobreakfast->quantity = $cantidad;
+                $breakfast = Breakfast::find($day->breakfast_id);
+                $foodtobreakfast->foodTo_id = $breakfast->id;
                 $foodtobreakfast->food_id = $id;
                 $foodtobreakfast->save();
-                $breakfast = Breakfast::find($day->breakfast_id);
-                
-                $breakfast->foodto_id = $foodtobreakfast->id;
-
-                $breakfast->save();
-
                 break;
             //Caso 2: Comida
             case 2:
                 $foodtolunch = new LunchTo();
                 $foodtolunch->quantity = $cantidad;
+                $lunch = Lunch::find($day->lunch_id);
+                $foodtolunch->foodTo_id = $lunch->id;
                 $foodtolunch->food_id = $id;
                 $foodtolunch->save();
-                $lunch = Lunch::find($day->lunch_id);
-
-                $lunch->foodto_id = $foodtolunch->id;
-
-                $lunch->save();
-                
                 break;
             //Caso 3: Cena
             case 3:
                 $foodtodinner = new DinnerTo();
                 $foodtodinner->quantity = $cantidad;
+                $dinner = Dinner::find($day->dinner_id);
+                $foodtodinner->foodTo_id = $dinner->id;
                 $foodtodinner->food_id = $id;
                 $foodtodinner->save();
-                $dinner = Dinner::find($day->dinner_id);
-
-                $dinner->foodto_id = $foodtobreakfast->id;
-
-                $dinner->save();
-                
                 break;
         }
 
-        return view('/home');
+
+        //Obtiene todos los alimentos
+        $food = Food::all();
+
+        //Regresa a la vista
+        return view('addfood')->with('foods', $food)->with('user', $user);
         
+    }
+
+    public function getDailyCalories(){
+        return view('recuento');
     }
 }

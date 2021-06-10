@@ -28,7 +28,9 @@ class HomeController extends Controller
         if(Auth::user()->role == 'admin'){
             return view('/homeadmin');
         } 
-        else    
+        else  {
             return view('/home');
+        }
+            
     }
 }

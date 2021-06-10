@@ -17,18 +17,18 @@ class CreateFoodtolunchTable extends Migration
             $table->bigIncrements('id');
             $table->float('quantity');
             //Relación con el alimento
-            $table->unsignedBigInteger('food_id');
+            $table->unsignedBigInteger('food_id')->nullable();
             
             $table->foreign('food_id')
                 ->references('id')
-                ->on('food');
+                ->on('food')->nullable();
 
             //Relación con la comida
-            $table->unsignedBigInteger('foodTo_id');
+            $table->unsignedBigInteger('foodTo_id')->nullable();
             
             $table->foreign('foodTo_id')
                 ->references('id')
-                ->on('lunch');
+                ->on('lunch')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
