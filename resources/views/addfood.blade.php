@@ -20,9 +20,8 @@
         <hr>
         {{-- Buscador --}}
         <div class="row justify-content-center mb-5 mt-5">
-            <form action="/addfood/{{ Auth::user()->id }}" method="POST" class="d-flex justify-content-center w-100">
+            <form action="/addfood" method="POST" class="d-flex justify-content-center w-100">
                 @csrf                
-                <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                     <input type="text" name="busqueda" class="form-control w-50 mr-2" placeholder="Busca un alimento">
                     <button type="submit" class="btn btn-outline-primary w-25">
                         Buscar
@@ -64,15 +63,8 @@
                             <div class="col-md-12 d-flex justify-content-center">
                                 <form action="/savefood/{{ $food->id }}" method="post" class="d-flex justify-content-center w-100">
                                     @csrf
-                                    <input type="hidden" name="userID" value="{{ Auth::user()->id }}">
                                     <label for="cantidad" class="titTxt textos h-100 w-25 mr-2 d-flex align-items-center justify-content-center">Cantidad ingerida:</label>
                                     <input type="text" name="cantidad" class="form-control w-25 mr-2" placeholder="Cantidad">
-                                    <select name="comida" id="inputState" class="form-control w-25 mr-2">
-                                        <option selected>Agregar a...</option>
-                                        <option value="1">Desayuno</option>
-                                        <option value="2">Comida</option>
-                                        <option value="3">Cena</option>
-                                    </select>
                                     <button type="submit" class="btn btn-primary">
                                         Agregar
                                     </button>

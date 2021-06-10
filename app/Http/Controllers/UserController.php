@@ -1,62 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
-use App\Day;
 use App\User;
-use App\Breakfast;
-use App\Lunch;
-use App\Dinner;
+use App\Day;
+use App\FoodTo;
 use App\Food;
-use App\BreakfastTo;
-use App\DinnerTo;
-use App\LunchTo;
 
 
 class UserController extends Controller
 {
-    public function createDay($id){
-
-        $day = new Day();
-        $day->day = date('Y-m-d');
-
-        //Creacion de la tabla Breakfast para Day
-        $breakfast = new Breakfast();
-        $breakfast->save();
-        $idBreakfast = $breakfast->id;
-        $day->breakfast_id = $idBreakfast;
-        
-
-        //Creacion de la tabla Lunch para Day
-        $lunch = new Lunch();
-        $lunch->save();
-        $idLunch = $lunch->id;
-        $day->lunch_id = $idBreakfast;
-        
-        
-        //Creacion de la tabla Dinner para Day
-        $dinner = new Dinner();
-        $dinner->save();
-        $idDinner = $dinner->id;
-        $day->dinner_id = $idDinner;
-        
-
-        $day->save();
-
-        //Se le asigna el dia al usuario
-        $user = User::find($id);
-        $user->day_id = $day->id;
-        $user->save();
-
+    public function addFood(){
         $food = Food::all();
-        return view('addfood')->with('foods', $food)->with('user', $user);
-    }
-
-    public function addFood($id){
-        $user = User::find($id);
-        $food = Food::all();
-        return view('addfood')->with('foods', $food)->with('user', $user);
+        return view('addfood')->with('foods', $food);
     }
 
     public function search(){
@@ -74,61 +32,43 @@ class UserController extends Controller
         return view('addfood')->with('foods', $food)->with('user', $user);
     }
 
-    public function saveFood($id){
-        $userID = request("userID");
-        $cantidad = request("cantidad");
-        $table = request("comida");
+    public function getDailyCalories(){
 
-        //Busca al usuario al cual se le agregará el alimento
-        $user = User::find($userID);
-        
-        //Busca el alimento a agregar
-        $food = Food::find($id);
+        $date = date('Y-m-d');
+        $day = Day::where('user_id', '=',  Auth::user()->id )
+                                ->where('date', '=', $date  )->first();
 
-        //Busca el día
-        $day = Day::find($user->day_id);
-
-        //Switch para saber el que comida se insertará el alimento
-        switch($table){
-            //Caso 1: Desayuno
-            case 1:
-                $foodtobreakfast = new BreakfastTo();
-                $foodtobreakfast->quantity = $cantidad;
-                $breakfast = Breakfast::find($day->breakfast_id);
-                $foodtobreakfast->foodTo_id = $breakfast->id;
-                $foodtobreakfast->food_id = $id;
-                $foodtobreakfast->save();
-                break;
-            //Caso 2: Comida
-            case 2:
-                $foodtolunch = new LunchTo();
-                $foodtolunch->quantity = $cantidad;
-                $lunch = Lunch::find($day->lunch_id);
-                $foodtolunch->foodTo_id = $lunch->id;
-                $foodtolunch->food_id = $id;
-                $foodtolunch->save();
-                break;
-            //Caso 3: Cena
-            case 3:
-                $foodtodinner = new DinnerTo();
-                $foodtodinner->quantity = $cantidad;
-                $dinner = Dinner::find($day->dinner_id);
-                $foodtodinner->foodTo_id = $dinner->id;
-                $foodtodinner->food_id = $id;
-                $foodtodinner->save();
-                break;
+        //dd($day);
+        if(!$day){
+            $day = new Day();
+            $day->user_id = Auth::user()->id;
+            $day->date = $date;
+            $day->save();
         }
 
-
-        //Obtiene todos los alimentos
-        $food = Food::all();
-
-        //Regresa a la vista
-        return view('addfood')->with('foods', $food)->with('user', $user);
-        
+        $foods = FoodTo::where('day_id', '=', $day->id)
+                            ->join('food', 'foodcount.food_id', '=', 'food.id')->get();
+        return view('recuento')->with('foods', $foods);
     }
 
-    public function getDailyCalories(){
-        return view('recuento');
+    public function saveFood($id){
+        $date = date('Y-m-d');
+        $day = Day::where('user_id', '=', Auth::user()->id)
+                            ->where('date', '=', $date)->first();
+
+        //dd($day);
+
+        $foodCount = new FoodTo();
+        $foodCount->day_id = $day->id;
+        $foodCount->food_id = $id;
+        $foodCount->quantity = request("cantidad");
+        $foodCount->save();
+
+        $foods = FoodTo::where('day_id', '=', "'" . $day->id . "'")
+                            ->join('food', 'foodcount.food_id', '=', 'food.id')->get();
+
+        return view('home');
+        //return view('recuento')->with('foods', $foods);
+
     }
 }
