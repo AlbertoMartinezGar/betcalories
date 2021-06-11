@@ -20,7 +20,7 @@
         <hr>
         {{-- Buscador --}}
         <div class="row justify-content-center mb-5 mt-5">
-            <form action="/addfood" method="POST" class="d-flex justify-content-center w-100">
+            <form action="/addfood/{{ $date }}" method="POST" class="d-flex justify-content-center w-100">
                 @csrf                
                     <input type="text" name="busqueda" class="form-control w-50 mr-2" placeholder="Busca un alimento">
                     <button type="submit" class="btn btn-outline-primary w-25">

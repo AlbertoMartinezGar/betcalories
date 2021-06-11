@@ -33,7 +33,7 @@ Route::group(['middleware' => ['role:user']], function () {
 
     Route::get('/addfood/{date}', 'UserController@addFood');
 
-    Route::post('/addfood', 'UserController@search');
+    Route::post('/addfood/{date}', 'UserController@search');
 
     Route::post('/savefood/{id}', 'UserController@saveFood');
 

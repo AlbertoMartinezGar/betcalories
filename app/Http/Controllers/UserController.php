@@ -19,7 +19,7 @@ class UserController extends Controller
         return view('addfood')->with('foods', $food)->with('date', $date);
     }
 
-    public function search(){
+    public function search($date){
         $palabra = request("busqueda");
         $id = request("id");
         $user = User::find($id);
@@ -31,7 +31,7 @@ class UserController extends Controller
             $food = Food::all();
         }
 
-        return view('addfood')->with('foods', $food)->with('user', $user);
+        return view('addfood')->with('foods', $food)->with('date', $date);
     }
 
     public function searchRegisteredFoods($date){
@@ -101,28 +101,17 @@ class UserController extends Controller
     }
 
     public function downloadReport(){
-        //$date = date('Y-m-d');
         $days = Day::where('user_id', '=', Auth::user()->id)->orderBy('date', 'DESC')->take(3)->get();
 
-        //ddd($days);
-        /*$foods = array();
-        foreach($days as $day){
-            $food = FoodTo::where('day_id', '=', $day->id)
-                                ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
 
-            array_push($foods, $food);
-        }*/
-        //ddd($foods);
         $food1 = FoodTo::where('day_id', '=', $days[0]->id)
                                 ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
-        //ddd($food1);
+        
         $food2 = FoodTo::where('day_id', '=', $days[1]->id)
                                 ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
-        //ddd($food2);
+        
         $food3 = FoodTo::where('day_id', '=', $days[2]->id)
                                 ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
-
-        //ddd($foods);
 
         $pdf = PDF::loadView('report', compact('food1', 'food2', 'food3'));
         return $pdf->download('reporte.pdf');

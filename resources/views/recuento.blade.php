@@ -17,7 +17,7 @@
         </div>
         <div class="row m-0 p-0 mt-3 justify-content-center">
             <?php
-                $date = date("Y-m-d");
+                $actualDate = date("Y-m-d");
                 $dateToBDMenos = date("Y-m-d", strtotime($date."- 1 days"));
                 //dd($dateToBDMenos);
                 $dateToBDMas = date("Y-m-d", strtotime($date."+ 1 days"));
@@ -26,7 +26,12 @@
                 <h2 class="text-primary">
                     <a href="/mycalories/{{ $dateToBDMenos }}" class="fas fa-arrow-left flecha"></a>
                     {{ $date }}
-                    <a href="/mycalories/{{ $dateToBDMas }}" class="fas fa-arrow-right flecha"></a>
+                    @if ($date == $actualDate)
+                        <a href="" class="fas fa-arrow-right flecha"></a>
+                    @else
+                        <a href="/mycalories/{{ $dateToBDMas }}" class="fas fa-arrow-right flecha"></a>
+                    @endif
+                    
                 </h2>
             </div>
             
@@ -90,7 +95,10 @@
                         </span>
                     </div>
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row justify-content-center">
+                            <span class="titTxt textos">Información nutrimental por cada 100 gramos.</span>
+                        </div>
+                        <div class="row mt-2">
                             <div class="col-md-6 text-center">
                                 <span class="titTxt textos">Calorias totales: </span>
                                 <span class="contTxt textos">{{ $food->totalCalories }}</span>
@@ -113,7 +121,7 @@
                         <div class="row mt-2 justify-content-center">
                             <div class="col-md-6 text-center">
                                 <span class="titTxt textos">Tu comiste: </span>
-                                <span class="contTxt textos">{{ $food->quantity }}</span>
+                                <span class="contTxt textos">{{ $food->quantity }} gramos</span>
                             </div>
                         </div>
                         <div class="row mt-5 justify-content-center">
