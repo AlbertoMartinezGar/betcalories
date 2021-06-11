@@ -19,8 +19,8 @@ class GeneralController extends Controller
 
     public function savefood(Request $request){
         $food= new Food();
-
         $food->name = request("txtAlimento");
+        $food->totalCalories = request("txtTotalCal");
         $food->carbs = request("txtCarbos");
         $food->proteins = request("txtProte");
         $food->fats = request("txtGrasas");
@@ -31,26 +31,26 @@ class GeneralController extends Controller
     }
 
     public function deleteFood($id){
-        $comida = Food::find($id);
+        $comida = Food::where('idFood', '=', $id);
         $comida->delete();
         return redirect("/registerfood");
     }
 
     public function getFood($id){
-        $comida = Food::find($id);
+        $comida = Food::where('idFood', '=', $id)->first();
         return view('editFood')->with('food', $comida);
     }
 
     public function saveEditFood(Request $request){
-        $id = request("txtID");
-        $food = Food::find($id);
-        $food->name = request("txtAlimento");
-        $food->carbs = request("txtCarbos");
-        $food->proteins = request("txtProte");
-        $food->fats = request("txtGrasas");
-        $food->totalCalories = request("txtTotalCal");
+        
+        Food::where('idFood', request("txtID"))->update(array(
+            'name' => request("txtAlimento"),
+            'carbs' => request("txtCarbos"),
+            'proteins' => request("txtProte"),
+            'fats' => request("txtGrasas"),
+            'totalCalories' => request("txtTotalCal")
+        ));
 
-        $food->save();
 
         return redirect("/registerfood");
     }

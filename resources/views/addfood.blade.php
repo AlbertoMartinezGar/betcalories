@@ -65,7 +65,7 @@
                                     @csrf
                                     <input type="hidden" name="fecha" value="{{ $date }}">
                                     <label for="cantidad" class="titTxt textos h-100 w-25 mr-2 d-flex align-items-center justify-content-center">Cantidad ingerida:</label>
-                                    <input type="text" name="cantidad" class="form-control w-25 mr-2" placeholder="Cantidad">
+                                    <input type="number" name="cantidad" class="form-control w-25 mr-2" placeholder="Cantidad" required step="any">
                                     <button type="submit" class="btn btn-primary">
                                         Agregar
                                     </button>

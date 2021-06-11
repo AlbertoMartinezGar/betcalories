@@ -23,7 +23,7 @@
                         <p class="titTxt">Nombre del alimento:</p>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="txtAlimento" placeholder="Nombre" class="w-100 form-control">
+                        <input type="text" name="txtAlimento" placeholder="Nombre" class="w-100 form-control" required>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -37,30 +37,30 @@
                         <span for="txtTotalCal" class="align-self-center titTxt">Calorias totales:</span> 
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="txtTotalCal" placeholder="Calorias totales" class="w-100 form-control">
+                        <input type="number" name="txtTotalCal" placeholder="Calorias totales" class="w-100 form-control" step="any" required>
                     </div>
                     {{-- Texto e input para los carbohidratos del alimento --}}
                     <div class="col-md-3 d-flex justify-content-end">
                         <span for="txtCarbos" class="align-self-center titTxt">Carbohidratos:</span> 
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="txtCarbos" placeholder="Carbohidratos" class="w-100 form-control">
+                        <input type="number" name="txtCarbos" placeholder="Carbohidratos" class="w-100 form-control" step="any" required>
                     </div>
                 </div>
                 <div class="row m-0 p-0 mt-3">
                     {{-- Texto e input para las proteinas del alimento --}}
                     <div class="col-md-3 d-flex justify-content-end">
-                        <span for="txtProte" class="align-self-center titTxt">Proteínas:</span>
+                        <span for="txtProte" class="align-self-center titTxt">Proteínas: </span>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="txtProte" placeholder="Proteína" class="w-100 form-control">
+                        <input type="number" name="txtProte" placeholder="Proteína" class="w-100 form-control" step="any" required>
                     </div>
                     {{-- Texto e input para las grasas del alimento --}}
                     <div class="col-md-3 d-flex justify-content-end">
                         <span for="txtGrasas" class="align-self-center titTxt">Grasas:</span>
                     </div> 
                     <div class="col-md-3">
-                        <input type="text" name="txtGrasas" placeholder="Grasas" class="w-100 form-control">
+                        <input type="number" name="txtGrasas" placeholder="Grasas" class="w-100 form-control" step="any" required>
                     </div>
                 </div>
                 {{-- Botón enviar --}}
@@ -104,13 +104,14 @@
                                 <span class="titTxt textos">Grasas: </span>
                                 <span class="contTxt textos">{{ $food->fats }}</span>
                             </div>
+                            {{ $food->id }}
                         </div>
                         <div class="row mt-5">
                             <div class="col-md-6 d-flex justify-content-center">
-                                <a href="/editaralimento/{{$food->id}}" class="btn btn-primary w-50">Editar</a>
+                                <a href="/editaralimento/{{$food->idFood}}" class="btn btn-primary w-50">Editar</a>
                             </div>
                             <div class="col-md-6 d-flex justify-content-center">
-                                <form action="/borraralimento/{{$food->id}}" method="post" class="d-flex justify-content-center w-100">
+                                <form action="/borraralimento/{{ $food->idFood }}" method="post" class="d-flex justify-content-center w-100">
                                     @csrf
                                     <button type="submit" class="btn btn-danger w-50">
                                         Eliminar

@@ -19,7 +19,6 @@
             <?php
                 $actualDate = date("Y-m-d");
                 $dateToBDMenos = date("Y-m-d", strtotime($date."- 1 days"));
-                //dd($dateToBDMenos);
                 $dateToBDMas = date("Y-m-d", strtotime($date."+ 1 days"));
             ?>
             <div class="col-3 d-flex justify-content-center">
@@ -36,9 +35,6 @@
             </div>
             
         </div>
-        @php
-               //dd($foods);
-            @endphp
         @if (!$foods->isEmpty())            
             <?php 
                 $caloriasTotales = 0; 

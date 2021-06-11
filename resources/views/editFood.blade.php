@@ -15,16 +15,16 @@
             <div class="row justify-content-center">
                 <p class="titulos text-uppercase"><b>Edita los valores de un alimento</b></p>
             </div>
-            <form action="/editaralimento/{{ $food->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/editaralimento/{{ $food->idFood }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 {{-- Texto e input para el nombre del alimento --}}
-                <input type="hidden" name="txtID" value="{{ $food->id }}">
+                <input type="hidden" name="txtID" value="{{ $food->idFood }}">
                 <div class="row m-0 p-0 mt-3">
                     <div class="col-4 d-flex justify-content-center">
                         <p class="titTxt">Nombre del alimento:</p>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="txtAlimento" placeholder="Nombre" class="w-100 form-control" value="{{ $food->name }}">
+                        <input type="text" name="txtAlimento" placeholder="Nombre" class="w-100 form-control" value="{{ $food->name }}" required>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -38,14 +38,14 @@
                         <span for="txtTotalCal" class="align-self-center titTxt">Calorias totales:</span> 
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="txtTotalCal" placeholder="Calorias totales" class="w-100 form-control" value="{{ $food->carbs }}">
+                        <input type="number" name="txtTotalCal" placeholder="Calorias totales" class="w-100 form-control" value="{{ $food->carbs }}" step="any" required>
                     </div>
                     {{-- Texto e input para los carbohidratos del alimento --}}
                     <div class="col-md-3 d-flex justify-content-end">
                         <span for="txtCarbos" class="align-self-center titTxt">Carbohidratos:</span> 
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="txtCarbos" placeholder="Carbohidratos" class="w-100 form-control" value="{{ $food->carbs }}">
+                        <input type="number" name="txtCarbos" placeholder="Carbohidratos" class="w-100 form-control" value="{{ $food->carbs }}" step="any" required>
                     </div>
                 </div>
                 <div class="row m-0 p-0 mt-3">
@@ -54,14 +54,14 @@
                         <span for="txtProte" class="align-self-center titTxt">Proteínas:</span>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="txtProte" placeholder="Proteína" class="w-100 form-control" value="{{ $food->proteins }}">
+                        <input type="number" name="txtProte" placeholder="Proteína" class="w-100 form-control" value="{{ $food->proteins }}" step="any" required>
                     </div>
                     {{-- Texto e input para las grasas del alimento --}}
                     <div class="col-md-3 d-flex justify-content-end">
                         <span for="txtGrasas" class="align-self-center titTxt">Grasas:</span>
                     </div> 
                     <div class="col-md-3">
-                        <input type="text" name="txtGrasas" placeholder="Grasas" class="w-100 form-control" value="{{ $food->fats }}">
+                        <input type="number" name="txtGrasas" placeholder="Grasas" class="w-100 form-control" value="{{ $food->fats }}" step="any" required>
                     </div>
                 </div>
                 {{-- Botón enviar --}}
