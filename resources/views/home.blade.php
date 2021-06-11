@@ -5,15 +5,37 @@
 </head>
 <body>
     @include('Plantillas.navbar')
-
+    <?php
+        $dateToBD = date('Y-m-d');
+    ?>
     <div class="container">
-        <div class="row">
-            <a href="/mycalories">Tus calorias diarias</a>
+        <div class="row mt-5">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row m-0 p-0">
+                            <img src="{{ asset('Add_files.png') }}" class="img-fluid">
+                        </div>
+                        <div class="row mt-5 justify-content-center">
+                            <a href="/mycalories/{{ $dateToBD }}" class="btn btn-primary">Tus calorias diarias</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row m-0 p-0">
+                            <img src="{{ asset('data_reports.png') }}" class="img-fluid">
+                        </div>
+                        <div class="row mt-5 justify-content-center">
+                            <a href="" class="btn btn-primary">Reportes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-        <div class="row">
-            <a href="">Reportes</a>
-        </div>
-        
     </div>
 </body>
 </html>

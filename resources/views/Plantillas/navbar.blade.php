@@ -1,4 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #007bff;">
+    <a class="navbar-brand" href="/home">
+        <img src="{{ asset('LogoBetCalories.png') }}" class="image">
+    </a>
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>

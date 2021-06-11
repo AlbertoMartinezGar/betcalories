@@ -12,9 +12,9 @@ use App\Food;
 
 class UserController extends Controller
 {
-    public function addFood(){
+    public function addFood($date){
         $food = Food::all();
-        return view('addfood')->with('foods', $food);
+        return view('addfood')->with('foods', $food)->with('date', $date);
     }
 
     public function search(){
@@ -32,10 +32,9 @@ class UserController extends Controller
         return view('addfood')->with('foods', $food)->with('user', $user);
     }
 
-    public function searchRegisteredFoods(){
+    public function searchRegisteredFoods($date){
         $palabra = request("busqueda");
 
-        $date = date('Y-m-d');
         $day = Day::where('user_id', '=',  Auth::user()->id )
                                 ->where('date', '=', $date  )->first();
 
@@ -49,12 +48,12 @@ class UserController extends Controller
                             ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
         }
 
-        return view('recuento')->with('foods', $foods);
+        return view('recuento')->with('foods', $foods)->with('date', $date);
     }
 
-    public function getDailyCalories(){
+    public function getDailyCalories($date){
 
-        $date = date('Y-m-d');
+        //$date = date('Y-m-d');
         $day = Day::where('user_id', '=',  Auth::user()->id )
                                 ->where('date', '=', $date  )->first();
 
@@ -68,11 +67,11 @@ class UserController extends Controller
 
         $foods = FoodTo::where('day_id', '=', $day->id)
                             ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
-        return view('recuento')->with('foods', $foods);
+        return view('recuento')->with('foods', $foods)->with('date', $date);
     }
 
     public function saveFood($id){
-        $date = date('Y-m-d');
+        $date = request("fecha");
         $day = Day::where('user_id', '=', Auth::user()->id)
                             ->where('date', '=', $date)->first();
 
@@ -87,13 +86,15 @@ class UserController extends Controller
         $foods = FoodTo::where('day_id', '=', "'" . $day->id . "'")
                             ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
 
-        return view('home');
-        //return view('recuento')->with('foods', $foods);
+        //return view('home');
+        return redirect("/mycalories/$date")->with('foods', $foods);
     }
 
     public function deleteFood($id){
+        $date = request("fecha");
         $food = FoodTo::find($id);
+        //dd($date);
         $food->delete();
-        return redirect("/home");
+        return redirect("/mycalories/$date");
     }
 }

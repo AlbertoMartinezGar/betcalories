@@ -31,15 +31,15 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 Route::group(['middleware' => ['role:user']], function () {
 
-    Route::get('/addfood', 'UserController@addFood');
+    Route::get('/addfood/{date}', 'UserController@addFood');
 
     Route::post('/addfood', 'UserController@search');
 
     Route::post('/savefood/{id}', 'UserController@saveFood');
 
-    Route::get('/mycalories', 'UserController@getDailyCalories');
+    Route::get('/mycalories/{date}', 'UserController@getDailyCalories');
 
-    Route::post('/mycalories', 'UserController@searchRegisteredFoods');
+    Route::post('/mycalories/{date}', 'UserController@searchRegisteredFoods');
 
     Route::post('/deletefood/{id}', 'UserController@deleteFood');
 });

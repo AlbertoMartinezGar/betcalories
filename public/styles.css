@@ -96,3 +96,7 @@ body{
 .textos{
     font-size: 1.2em;
 }
+
+.flecha:hover{
+    text-decoration: none;
+}

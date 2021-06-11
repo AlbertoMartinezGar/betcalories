@@ -5,10 +5,30 @@
 </head>
 <body>
     @include('Plantillas.navbar')
-
+    <div class="row m-0 p-0 justify-content-end mt-3">
+        <div class="col-3">
+            <a href="/home">Regresar al inicio</a>
+        </div>
+    </div>
+    <hr>
     <div class="container">
         <div class="row m-0 p-0 mt-5 justify-content-center">
             <h1 class="text-primary text-center">Bienvenido <b class="text-capitalize">{{ Auth::user()->name }}</b></h1>
+        </div>
+        <div class="row m-0 p-0 mt-3 justify-content-center">
+            <?php
+                $dateToBDMenos = date("Y-m-d", strtotime($date."- 1 days"));
+                //dd($dateToBDMenos);
+                $dateToBDMas = date("Y-m-d", strtotime($date."+ 1 days"));
+            ?>
+            <div class="col-3 d-flex justify-content-center">
+                <h2 class="text-primary">
+                    <a href="/mycalories/{{ $dateToBDMenos }}" class="fas fa-arrow-left flecha"></a>
+                    {{ $date }}
+                    <a href="/mycalories/{{ $dateToBDMas }}" class="fas fa-arrow-right flecha"></a>
+                </h2>
+            </div>
+            
         </div>
         @php
                //dd($foods);
@@ -51,7 +71,7 @@
             </div>
             {{-- Buscador --}}
             <div class="row justify-content-center mb-5 mt-5">
-                <form action="/mycalories" method="POST" class="d-flex justify-content-center w-100">
+                <form action="/mycalories/{{ $date }}" method="POST" class="d-flex justify-content-center w-100">
                     @csrf                
                         <input type="text" name="busqueda" class="form-control w-50 mr-2" placeholder="Busca un alimento">
                         <button type="submit" class="btn btn-outline-primary w-25">
@@ -99,6 +119,7 @@
                             <div class="col-md-6 d-flex justify-content-center">
                                 <form action="/deletefood/{{$food->id}}" method="post" class="d-flex justify-content-center w-100">
                                     @csrf
+                                    <input type="hidden" name="fecha" value="{{ $date }}">
                                     <button type="submit" class="btn btn-danger w-50">
                                         Eliminar
                                     </button>
@@ -116,7 +137,7 @@
             </h2>
         </div>
         <div class="row m-0 p-0 mt-5">
-            <a href="/addfood">
+            <a href="/addfood/{{ $date }}">
                 <button class="btn btn-primary">
                     Registra un alimento
                 </button>
