@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -70,7 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
-        ]);
+        ])->assignRole('user');
     }
 
     public function register(){
@@ -79,9 +80,9 @@ class RegisterController extends Controller
         $usuario->email = request('email');
         $usuario->password = Hash::make(request('password'));
         $usuario->role = request('role');
-
+        $usuario->assignRole('user');
         $usuario->save();
 
-        return redirect("/");
+        return redirect("/home");
     }
 }

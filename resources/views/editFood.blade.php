@@ -34,14 +34,14 @@
                 </div>
                 <div class="row m-0 p-0 mt-3">
                     {{-- Texto e input para los carbohidratos del alimento --}}
-                    <div class="col-md-3 d-flex justify-content-end">
+                    <div class="col-md-3 d-flex justify-content-center">
                         <span for="txtTotalCal" class="align-self-center titTxt">Calorias totales:</span> 
                     </div>
                     <div class="col-md-3">
                         <input type="number" name="txtTotalCal" placeholder="Calorias totales" class="w-100 form-control" value="{{ $food->carbs }}" step="any" required>
                     </div>
                     {{-- Texto e input para los carbohidratos del alimento --}}
-                    <div class="col-md-3 d-flex justify-content-end">
+                    <div class="col-md-3 d-flex justify-content-center">
                         <span for="txtCarbos" class="align-self-center titTxt">Carbohidratos:</span> 
                     </div>
                     <div class="col-md-3">
@@ -50,14 +50,14 @@
                 </div>
                 <div class="row m-0 p-0 mt-3">
                     {{-- Texto e input para las proteinas del alimento --}}
-                    <div class="col-md-3 d-flex justify-content-end">
+                    <div class="col-md-3 d-flex justify-content-center">
                         <span for="txtProte" class="align-self-center titTxt">Proteínas:</span>
                     </div>
                     <div class="col-md-3">
                         <input type="number" name="txtProte" placeholder="Proteína" class="w-100 form-control" value="{{ $food->proteins }}" step="any" required>
                     </div>
                     {{-- Texto e input para las grasas del alimento --}}
-                    <div class="col-md-3 d-flex justify-content-end">
+                    <div class="col-md-3 d-flex justify-content-center">
                         <span for="txtGrasas" class="align-self-center titTxt">Grasas:</span>
                     </div> 
                     <div class="col-md-3">

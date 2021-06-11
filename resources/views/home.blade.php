@@ -10,10 +10,10 @@
     ?>
     <div class="container">
         <div class="row mt-5">
-            <div class="col-6">
+            <div class="col-md-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row m-0 p-0">
+                        <div class="row m-0 p-0 ">
                             <img src="{{ asset('Add_files.png') }}" class="img-fluid">
                         </div>
                         <div class="row mt-5 justify-content-center">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="row m-0 p-0">
@@ -36,9 +36,6 @@
                                 </button>
                             </form>
                         </div>
-                        {{-- <div class="row mt-5 justify-content-center">
-                            <a href="" class="btn btn-primary">Reportes</a>
-                        </div> --}}
                     </div>
                 </div>
             </div>

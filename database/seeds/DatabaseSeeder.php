@@ -5,6 +5,8 @@ use Illuminate\Support\Str;
 
 use App\User;
 use App\Food;
+use App\Day;
+use App\FoodTo;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,5 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(FoodSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(DaySeeder::class);
+        $this->call(FoodCountSeeder::class);
     }
 }
