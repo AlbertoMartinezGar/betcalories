@@ -42,6 +42,8 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::post('/mycalories/{date}', 'UserController@searchRegisteredFoods');
 
     Route::post('/deletefood/{id}', 'UserController@deleteFood');
+
+    Route::post('/getreport', 'UserController@downloadReport');
 });
 
 

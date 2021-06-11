@@ -29,8 +29,16 @@
                             <img src="{{ asset('data_reports.png') }}" class="img-fluid">
                         </div>
                         <div class="row mt-5 justify-content-center">
-                            <a href="" class="btn btn-primary">Reportes</a>
+                            <form action="/getreport" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">
+                                    Obten un reporte de tus últimos días
+                                </button>
+                            </form>
                         </div>
+                        {{-- <div class="row mt-5 justify-content-center">
+                            <a href="" class="btn btn-primary">Reportes</a>
+                        </div> --}}
                     </div>
                 </div>
             </div>

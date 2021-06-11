@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\User;
 use App\Day;
 use App\FoodTo;
 use App\Food;
+use PDF;
 
 
 class UserController extends Controller
@@ -96,5 +98,33 @@ class UserController extends Controller
         //dd($date);
         $food->delete();
         return redirect("/mycalories/$date");
+    }
+
+    public function downloadReport(){
+        //$date = date('Y-m-d');
+        $days = Day::where('user_id', '=', Auth::user()->id)->orderBy('date', 'DESC')->take(3)->get();
+
+        //ddd($days);
+        /*$foods = array();
+        foreach($days as $day){
+            $food = FoodTo::where('day_id', '=', $day->id)
+                                ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
+
+            array_push($foods, $food);
+        }*/
+        //ddd($foods);
+        $food1 = FoodTo::where('day_id', '=', $days[0]->id)
+                                ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
+        //ddd($food1);
+        $food2 = FoodTo::where('day_id', '=', $days[1]->id)
+                                ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
+        //ddd($food2);
+        $food3 = FoodTo::where('day_id', '=', $days[2]->id)
+                                ->join('food', 'foodcount.food_id', '=', 'food.idFood')->get();
+
+        //ddd($foods);
+
+        $pdf = PDF::loadView('report', compact('food1', 'food2', 'food3'));
+        return $pdf->download('reporte.pdf');
     }
 }

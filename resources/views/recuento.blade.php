@@ -17,6 +17,7 @@
         </div>
         <div class="row m-0 p-0 mt-3 justify-content-center">
             <?php
+                $date = date("Y-m-d");
                 $dateToBDMenos = date("Y-m-d", strtotime($date."- 1 days"));
                 //dd($dateToBDMenos);
                 $dateToBDMas = date("Y-m-d", strtotime($date."+ 1 days"));
@@ -58,7 +59,7 @@
                 </h2>
             </div>
             <div class="row m-0 p-0 mt-5 justify-content-center">
-                <a href="/addfood">
+                <a href="/addfood/{{ $date }}">
                     <button class="btn btn-primary">
                         Agrega un alimento
                     </button>
